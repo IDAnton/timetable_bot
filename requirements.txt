@@ -1,0 +1,6 @@
+python-telegram-bot
+beautifulsoup4
+requests
+psycopg2
+pytz
+emoji

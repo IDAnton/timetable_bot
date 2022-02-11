@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  bot:
+    build: .
+    command: python ngu.py
+    volumes:
+      - .:/usr/src/app/
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+  db:
+    image: postgres:11.9-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - TZ="Asia/Novosibirsk"
+volumes:
+  postgres_data:
